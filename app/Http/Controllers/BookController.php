@@ -14,9 +14,9 @@ class BookController extends Controller
      */
     public function index()
     {
-       
+
         $books = Book::all();
- 
+
         return view('index_book', compact('books'));
     }
 
@@ -44,9 +44,9 @@ class BookController extends Controller
             'isbn' => 'required|numeric',
             'publisheddate' => 'required|date_format:Y-m-d H:i:s|after_or_equal:' . date(DATE_ATOM),
         ]);
-        
+
         $show = Book::create($validatedData);
-   
+
         return redirect('/books')->with('success', 'Book is successfully saved');
     }
 
@@ -109,4 +109,5 @@ class BookController extends Controller
 
         return redirect('/books')->with('success', 'Book Data is successfully deleted');
     }
+
 }

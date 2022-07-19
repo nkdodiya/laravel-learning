@@ -1,15 +1,21 @@
-@extends('layout')
 
+@extends('layouts.app')
 @section('content')
 <style>
   .uper {
     margin-top: 40px;
   }
 </style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+
 <div class="uper">
   @if(session()->get('success'))
     <div class="alert alert-success">
-      {{ session()->get('success') }}  
+      {{ session()->get('success') }}
     </div><br />
   @endif
   <table class="table table-striped">
@@ -39,9 +45,17 @@
                   <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
             </td>
+
+            <td>
+                <a href="{{ route('reviews.givereview', $case->id)}}" class="btn btn-primary">Review</a>
+            </td>
+
         </tr>
         @endforeach
     </tbody>
   </table>
+</div></div></div>
 <div>
 @endsection
+
+
