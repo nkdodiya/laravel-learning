@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Repositories\ReviewRepositoryInterface;
+use App\Repositories\Interfaces\ReviewRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Review;
 
@@ -31,8 +31,8 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
 
-        $review = $this->repository->storereview($request->all());
-        return redirect('/books')->with('success', 'Book review is successfully saved');
+      return  $this->repository->storereview($request->all());
+
 
     }
 

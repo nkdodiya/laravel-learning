@@ -33,6 +33,7 @@ Route::group(['prefix' => 'books'], function() {
     Route::get('/{id}/show', 'BookController@show')->name('books.show');
     Route::get('/{id}/edit', 'BookController@edit')->name('books.edit');
     Route::patch('/{id}/update', 'BookController@update')->name('books.update');
+    Route::put('{id}/update', 'BookController@update')->name('books.update');
     Route::delete('/{id}/delete', 'BookController@destroy')->name('books.destroy');
 
 

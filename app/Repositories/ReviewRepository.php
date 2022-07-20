@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Review;
-use App\Repositories\ReviewRepositoryInterface;
+use App\Repositories\Interfaces\ReviewRepositoryInterface;
 
 
 class ReviewRepository  implements ReviewRepositoryInterface
@@ -17,9 +17,10 @@ class ReviewRepository  implements ReviewRepositoryInterface
 
     public function storereview($request)
     {
+        //dd($request);
 
-        return Review::create($request);
-
+        $review =  Review::create($request);
+        return redirect('/books')->with('success', 'Book review is successfully saved');
 
     }
 }

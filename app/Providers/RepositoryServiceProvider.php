@@ -23,7 +23,8 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bind(\App\Repositories\ReviewRepositoryInterface::class, \App\Repositories\ReviewRepository::class);
+        $this->app->bind(\App\Repositories\Interfaces\ReviewRepositoryInterface::class, \App\Repositories\ReviewRepository::class);
+        $this->app->bind(\App\Repositories\Interfaces\BookRepositoryInterface::class, \App\Repositories\BookRepository::class);
         //:end-bindings:
     }
 }
