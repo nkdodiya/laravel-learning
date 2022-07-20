@@ -31,6 +31,7 @@
     </thead>
     <tbody>
         @foreach($books as $case)
+        <?php $flag =0; ?>
         <tr>
             <td>{{$case->id}}</td>
             <td>{{$case->bookname}}</td>
@@ -45,10 +46,21 @@
                   <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
             </td>
+            <td><a href="{{ route('books.show', $case->id)}}" class="btn btn-info">Show</a></td>
 
-            <td>
-                <a href="{{ route('reviews.givereview', $case->id)}}" class="btn btn-primary">Review</a>
-            </td>
+                @foreach($review as $case1)
+                @if($case1->id == Auth::user()->id and $case1->book_id==$case->id)
+                    <?php $flag = 1; break;?>
+                @else
+                    <?php $flag = 0; ?>
+                @endif
+                @endforeach
+
+                @if($flag==1)
+                <td> <a  class="btn btn-success">Reviewed</a> </td>
+                @else
+                <td> <a href="{{ route('reviews.givereview', $case->id)}}" class="btn btn-warning">Review</a></td>
+                @endif
 
         </tr>
         @endforeach

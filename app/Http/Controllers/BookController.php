@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Book;
+use App\User;
+use Auth;
 
 class BookController extends Controller
 {
@@ -16,8 +19,19 @@ class BookController extends Controller
     {
 
         $books = Book::all();
+        $uid = auth()->user()->id;
+        if($review=DB::table('Reviews')->where('id' , $uid)->get())
+        {
 
-        return view('index_book', compact('books'));
+            return view('index_book', compact(['books','review']));
+
+        }
+
+        else
+         return view('index_book', compact('books'));
+
+
+
     }
 
     /**
@@ -58,7 +72,15 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
+
+         $bookdata= DB::table('books')
+
+        ->leftJoin('reviews', 'books.id', '=', 'reviews.book_id')
+        ->leftJoin('users', 'users.id', '=', 'reviews.id')
+        ->select('books.*','users.name', 'reviews.content', 'reviews.rating')
+        ->where('books.id','=',$id)
+        ->get();
+        return view('show_book',compact('bookdata'));
     }
 
     /**
@@ -72,7 +94,6 @@ class BookController extends Controller
 
         $book = Book::findOrFail($id);
 
-        return view('edit_book', compact('book'));
     }
 
     /**
