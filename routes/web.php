@@ -40,14 +40,8 @@ Route::group(['prefix' => 'books'], function() {
 
 Route::group(['prefix' => 'reviews'], function() {
     Route::get('/{id}/givereview', 'ReviewController@givereview')->name('reviews.givereview');
-    Route::get('/', 'ReviewController@index')->name('reviews.index');
-    /*Route::get('/create', 'ReviewController@create')->name('reviews.create');*/
     Route::post('/create', 'ReviewController@store')->name('reviews.store');
-   /* Route::get('/{id}/show', 'BookController@show')->name('books.show');
-    Route::get('/{id}/edit', 'BookController@edit')->name('books.edit');
-    Route::patch('/{id}/update', 'BookController@update')->name('books.update');
-    Route::delete('/{id}/delete', 'BookController@destroy')->name('books.destroy');
-    Route::get('/{id}/givereview', 'ReviewController@create')->name('books.givereview');*/
+
 });
 });
 

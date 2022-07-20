@@ -2,53 +2,24 @@
 
 namespace App\Repositories;
 
-use NamTran\LaravelMakeRepositoryService\Repository\BaseRepository;
+use App\Review;
 use App\Repositories\ReviewRepositoryInterface;
 
 
-class ReviewRepository extends BaseRepository implements ReviewRepositoryInterface
+class ReviewRepository  implements ReviewRepositoryInterface
 {
-    /**
-     * Specify Model class name
-     *
-     * @return string
-     */
-    public function model()
-    {
-        //return;
-    }
 
-    public function getAllreview()
-    {
-
-        return Review::all();
-
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function givereviewbook($id)
     {
-
         //return view('givereview',['id' => $id]);
 
+    }
 
-    }
-    public function createreview()
-    {
-        return 'done';
-    }
-    public function storereview(Request $request)
+    public function storereview($request)
     {
 
-        $input = $request->all();
+        return Review::create($request);
 
-        $show = Review::create($input);
-        return 'done';
 
     }
 }

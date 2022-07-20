@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8edb5355bc644a269ef9318d39371992",
+    "content-hash": "ddd326e20695123396a9548f6292a7c3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5979,56 +5979,6 @@
             "time": "2020-07-09T08:09:16+00:00"
         },
         {
-            "name": "jason-guru/laravel-make-repository",
-            "version": "0.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jason-guru/laravel-make-repository.git",
-                "reference": "693d3d189c0b19262a896eb888c3a7b870a2de43"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jason-guru/laravel-make-repository/zipball/693d3d189c0b19262a896eb888c3a7b870a2de43",
-                "reference": "693d3d189c0b19262a896eb888c3a7b870a2de43",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "JasonGuru\\LaravelMakeRepository\\RepositoryServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "JasonGuru\\LaravelMakeRepository\\": "src/"
-                },
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "G Jason Sharma",
-                    "email": "g.jason.sharma@gmail.com"
-                }
-            ],
-            "description": "A simple package to create a make:repository command for Laravel 5+",
-            "support": {
-                "issues": "https://github.com/jason-guru/laravel-make-repository/issues",
-                "source": "https://github.com/jason-guru/laravel-make-repository/tree/0.0.3"
-            },
-            "time": "2020-10-24T13:21:42+00:00"
-        },
-        {
             "name": "laravel/sail",
             "version": "v1.15.0",
             "source": {
@@ -8027,59 +7977,6 @@
                 }
             ],
             "time": "2020-09-28T06:39:44+00:00"
-        },
-        {
-            "name": "thanhnamcnv/laravel-make-repository-service",
-            "version": "3.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/namtrt/laravel-make-repository-service.git",
-                "reference": "e5c69ab378fa6cca9afb9c67ea8ff2b5e95797a2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/namtrt/laravel-make-repository-service/zipball/e5c69ab378fa6cca9afb9c67ea8ff2b5e95797a2",
-                "reference": "e5c69ab378fa6cca9afb9c67ea8ff2b5e95797a2",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/config": "~5.0|~6.0|~7.0|~8.0|~9.0",
-                "illuminate/console": "~5.0|~6.0|~7.0|~8.0|~9.0",
-                "illuminate/database": "~5.0|~6.0|~7.0|~8.0|~9.0",
-                "illuminate/filesystem": "~5.0|~6.0|~7.0|~8.0|~9.0",
-                "illuminate/http": "~5.0|~6.0|~7.0|~8.0|~9.0",
-                "illuminate/pagination": "~5.0|~6.0|~7.0|~8.0|~9.0",
-                "illuminate/support": "~5.0|~6.0|~7.0|~8.0|~9.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "NamTran\\LaravelMakeRepositoryService\\RepositoryServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "NamTran\\LaravelMakeRepositoryService\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nam Tran",
-                    "email": "thanhnam2494@gmail.com"
-                }
-            ],
-            "description": "A simple package to create a make:repository, make:service command for Laravel 8+",
-            "support": {
-                "issues": "https://github.com/namtrt/laravel-make-repository-service/issues",
-                "source": "https://github.com/namtrt/laravel-make-repository-service/tree/3.8"
-            },
-            "time": "2022-07-13T04:45:41+00:00"
         },
         {
             "name": "theseer/tokenizer",
