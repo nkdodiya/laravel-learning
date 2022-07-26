@@ -10,7 +10,7 @@ use App\Checkout;
 
 class Book extends Model
 {
-    protected $fillable = ['author', 'description', 'bookname','isbn','publisheddate'];
+    protected $fillable = ['author', 'description', 'bookname','isbn','publisheddate','cover'];
 
     public function reviews()
     {

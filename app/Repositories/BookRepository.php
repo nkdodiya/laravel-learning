@@ -29,13 +29,7 @@ class BookRepository  implements BookRepositoryInterface
     {
         $fileName = time().'_'.$request['file']->getClientOriginalName();
         $request['file']->move(public_path('uploads'), $fileName);
-        $book = new Book;
-        $book->bookname = $request['bookname'];
-        $book->author = $request['author'];
-        $book->isbn = $request['isbn'];
-        $book->publisheddate = $request['publisheddate'];
-        $book->cover =$fileName;
-        $book->save();
+        $request['cover'] = $fileName;
         return  Book::create($request);
     }
 
