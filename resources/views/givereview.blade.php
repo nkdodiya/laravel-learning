@@ -25,7 +25,7 @@
                     @endif
                     <form method="post" action="{{ route('reviews.store') }}">
                         @csrf
-                        <input  type="hidden" class="form-control" class="form-control" name="id" value ="{{ Auth::user()->id }}" >
+                        <input  type="hidden" class="form-control" class="form-control" name="user_id" value ="{{ Auth::user()->id }}" >
                         <input  type="hidden" class="form-control" class="form-control" name="book_id" value ="{!! $id !!}" >
 
                        <div class="form-group">

@@ -10,7 +10,7 @@ use App\Book;
 
 class Review extends Model
 {
-    protected $fillable = ['id','book_id', 'content', 'rating'];
+    protected $fillable = ['user_id','book_id', 'content', 'rating'];
 
     public function user()
     {
@@ -20,5 +20,6 @@ class Review extends Model
     {
         return $this->belongsTo(Book::class);
     }
+
 }
 ?>

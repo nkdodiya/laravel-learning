@@ -43,7 +43,9 @@
                                 <a class="dropdown-item" href="{{ route('books.create') }}">
                                    Create Book
                                 </a>
-
+                                <a class="dropdown-item" href="{{ route('books.listissed') }}">
+                                    My Issed Book
+                                 </a>
 
                             </div>
 

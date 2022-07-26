@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 use App\Review;
 use App\Book;
+use App\Checkout;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -46,5 +47,9 @@ class User extends Authenticatable
 
     public function reviews(){
         return $this->hasMany(Review::class);
+    }
+
+    public function checkouts(){
+        return $this->hasMany(Checkout::class);
     }
 }

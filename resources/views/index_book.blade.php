@@ -37,7 +37,8 @@
             <td>{{$case->bookname}}</td>
             <td>{{$case->author}}</td>
             <td>{{$case->isbn}}</td>
-             <td>{{$case->publisheddate}}</td>
+            <td>{{$case->publisheddate}}</td>
+
             <td><a href="{{ route('books.edit', $case->id)}}" class="btn btn-primary">Edit</a></td>
             <td>
                 <form action="{{ route('books.destroy', $case->id)}}" method="post">
@@ -48,26 +49,56 @@
             </td>
             <td><a href="{{ route('books.show', $case->id)}}" class="btn btn-info">Show</a></td>
 
-                @foreach($review as $case1)
-                @if($case1->id == Auth::user()->id and $case1->book_id==$case->id)
-                    <?php $flag = 1; break;?>
-                @else
-                    <?php $flag = 0; ?>
-                @endif
-                @endforeach
+            <td>
 
-                @if($flag==1)
-                <td> <a  class="btn btn-success">Reviewed</a> </td>
+                 @if($case['reviews_count'])
+                     <a  class="btn btn-success">Reviewed</a>
                 @else
-                <td> <a href="{{ route('reviews.givereview', $case->id)}}" class="btn btn-warning">Review</a></td>
+                    <a href="{{ route('reviews.givereview', $case->id)}}" class="btn btn-warning">Review</a>
                 @endif
-
+            </td>
+            <td>
+            @if($case['checkouts_count'])
+             <input type="button"  class="btn btn-info" value="Isssued" disabled>
+            @else
+             <input type="button" id=issue{{$case->id}} onclick='getMessage({{$case->id}})' class="btn btn-success" value="Issue Book">
+            @endif
+            </td>
         </tr>
         @endforeach
+
     </tbody>
   </table>
 </div></div></div>
 <div>
+
 @endsection
+
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+   function getMessage(id)
+   {
+
+        $.ajax({
+           type:'POST',
+           url:"{{ route('checkout.issuebook') }}",
+           data: {"id": id,"_token": "{{ csrf_token() }}"},
+           success:function(data){
+            $('#issue'+id).val(" Issued ");
+            $('#issue'+id).removeClass('btn-success').addClass('btn-info');
+            $('#issue'+id).attr('disabled', 'disabled');
+           }
+        });
+
+	}
+</script>
+
 
 

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Review;
 use App\User;
+use App\Checkout;
 
 class Book extends Model
 {
@@ -13,7 +14,12 @@ class Book extends Model
 
     public function reviews()
     {
-        return $this->hasone(Review::class);
+        return $this->hasMany(Review::class);
+    }
+
+    public function checkouts()
+    {
+        return $this->hasOne(Checkout::class);
     }
 
     public function user()

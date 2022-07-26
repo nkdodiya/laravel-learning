@@ -35,6 +35,8 @@ Route::group(['prefix' => 'books'], function() {
     Route::patch('/{id}/update', 'BookController@update')->name('books.update');
     Route::put('{id}/update', 'BookController@update')->name('books.update');
     Route::delete('/{id}/delete', 'BookController@destroy')->name('books.destroy');
+    Route::get('/download/{file}','BookController@download')->name('books.download');
+    Route::get('/listissed', 'BookController@listissed')->name('books.listissed');
 
 
 });
@@ -42,6 +44,12 @@ Route::group(['prefix' => 'books'], function() {
 Route::group(['prefix' => 'reviews'], function() {
     Route::get('/{id}/givereview', 'ReviewController@givereview')->name('reviews.givereview');
     Route::post('/create', 'ReviewController@store')->name('reviews.store');
+
+});
+
+Route::group(['prefix' => 'checkout'], function() {
+    Route::post('/issuebook', 'CheckoutController@issuebook')->name('checkout.issuebook');
+    Route::post('/returnbook', 'CheckoutController@returnbook')->name('checkout.returnbook');
 
 });
 });

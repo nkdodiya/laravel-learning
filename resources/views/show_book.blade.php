@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
-@section('content')
+@section('content')<?php
 
 
+ ?>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -17,21 +18,28 @@
                     @endif
 
 
-                    @foreach($bookdata as $case)
+
                     <div class="alert alert-success">
-                        <h2>Book ::  {{$case->bookname}} </h2>
+                        <h2>Book ::  {{$bookdata->bookname}} </h2>
                     </div>
                     <div class="card-body">
-                        <h4>Author ::  {{$case->author}} </h4>
-                        <h4>ISBN No. ::  {{$case->isbn}} </h4>
-                        <h4>Published Date ::  {{$case->publisheddate}} </h4>
+                        <h4>Author ::  {{$bookdata->author}} </h4>
+                        <h4>ISBN No. ::  {{$bookdata->isbn}} </h4>
+                        <h4>Published Date ::  {{$bookdata->publisheddate}} </h4>
+
+                        <h2 class="font-medium text-base mr-auto">Download Book</h2>
+                         <button>
+                            <a data-feather="file"  href="{{ route('books.download', $bookdata->cover) }}" > Download</a>
+                          </button>
+
+                        @foreach($bookdata->reviews as $case)
                         <hr>
-                        <h3>Review By ::  {{$case->name}} </h3>
+                        <h3>Review By ::  {{$case->user->name}} </h3>
                         <h3>Review ::  {{$case->content}} </h3>
                         <h3>Rating ::  {{$case->rating}} </h3>
-
+                        @endforeach
                     </div>
-                    @endforeach
+
                 </div>
             </div>
         </div>

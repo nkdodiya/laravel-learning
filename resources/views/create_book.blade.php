@@ -23,7 +23,7 @@
                         </ul>
                     </div><br />
                     @endif
-                    <form method="post" action="{{ route('books.store') }}">
+                    <form method="post" action="{{ route('books.store') }}" role="form" enctype="multipart/form-data">
                         <div class="form-group">
                             @csrf
                             <label for="bookbname">Book Name:</label>
@@ -43,6 +43,13 @@
                             <label for="publisheddate">Published date :</label>
                             <input type="dateandtime" class="form-control" name="publisheddate" >
                         </div>
+
+                        <div class="form-group">
+                            <label for="publisheddate">Upload Book :</label>
+                            <input type="file" name="file" class="form-control">
+                        </div>
+
+
                         <button type="submit" class="btn btn-primary">Add Data</button>
                     </form>
                 </div>

@@ -8,7 +8,6 @@ interface  BookRepositoryInterface
 
     public function getall();
 
-    public function createbook();
 
     public function storedata(Request $request);
 
@@ -19,4 +18,7 @@ interface  BookRepositoryInterface
     public function updatedata(Request $request, $id);
 
     public function destroydata($id);
+
+    public function getIssued();
+
 }

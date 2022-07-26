@@ -16,14 +16,14 @@ class CreateReviewsTable extends Migration
         Schema::create('reviews', function (Blueprint $table) {
 
             $table->engine = 'InnoDB';
-            $table->unsignedBigInteger('id');
+            $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('book_id');
 
-           $table->string('reviewer_name');
             $table->string('content');
             $table->integer('rating');
             $table->timestamps();
-            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
 
 
