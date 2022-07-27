@@ -89,11 +89,12 @@
         $.ajax({
            type:'POST',
            url:"{{ route('checkout.issuebook') }}",
-           data: {"id": id,"_token": "{{ csrf_token() }}"},
+           data: {"book_id": id,"user_id":{{ Auth::user()->id}},"_token": "{{ csrf_token() }}"},
            success:function(data){
             $('#issue'+id).val(" Issued ");
             $('#issue'+id).removeClass('btn-success').addClass('btn-info');
             $('#issue'+id).attr('disabled', 'disabled');
+            console.log(data);
            }
         });
 

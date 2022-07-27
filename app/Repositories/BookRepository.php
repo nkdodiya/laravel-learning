@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 
 use App\Repositories\Interfaces\BookRepositoryInterface;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Book;
 use App\User;
@@ -27,9 +28,14 @@ class BookRepository  implements BookRepositoryInterface
 
     public function storedata($request)
     {
-        $fileName = time().'_'.$request['file']->getClientOriginalName();
-        $request['file']->move(public_path('uploads'), $fileName);
-        $request['cover'] = $fileName;
+
+        $filenameWithExt = $request['file']->getClientOriginalName();
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        $extension = $request['file']->getClientOriginalExtension();
+        $fileNameToStore = $filename.'_'.time().'.'.$extension;
+        $path = $request['file']->storeAs('public',$fileNameToStore);
+        $request['cover'] = $fileNameToStore ;
+
         return  Book::create($request);
     }
 
@@ -56,9 +62,7 @@ class BookRepository  implements BookRepositoryInterface
     public function getIssued()
     {
         $uid = auth()->user()->id;
-        return  Book::with(['checkouts' => function($query){
-            $query->select('id','user_id','book_id');
-            }])->get()->where("checkouts.user_id", "=", $uid);
+        return  Book::with(['checkouts:id,user_id,book_id'])->get()->where("checkouts.user_id","=",$uid);
     }
 
 

@@ -9,7 +9,7 @@ use App\User;
 class Checkout extends Model
 {
     use HasFactory;
-    protected $fillable = ['checkout_date'];
+    protected $fillable = ['user_id','book_id'];
 
     public function user()
     {

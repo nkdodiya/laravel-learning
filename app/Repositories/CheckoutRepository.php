@@ -11,20 +11,12 @@ class CheckoutRepository  implements CheckoutRepositoryInterface
 
     public function giveissue($request)
     {
-
-        $uid = auth()->user()->id;
-        $cdata = new DateTime();
-        $checkout = new Checkout;
-        $checkout->user_id  = $uid;
-        $checkout->book_id  = $request->id;
-        $checkout->checkin_date = $cdata;
-        $checkout->save();
-        return 'done';
+        return Checkout::create($request->all());
     }
 
     public function returned($request)
     {
-        return Checkout::findOrFail($request->id)->delete();
+        return Checkout::where('id',$request->id)->delete();
     }
 
 }

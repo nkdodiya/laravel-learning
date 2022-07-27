@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Repositories\Interfaces\BookRepositoryInterface;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Book;
 use App\User;
@@ -81,9 +82,9 @@ class BookController extends Controller
 
         return redirect('/books')->with('success', 'Book Data is successfully deleted');
     }
-    public function download($fileName){
-        $file_path = public_path('uploads/'.$fileName);
-        return response()->download( $file_path);
+    public function download($fileName)
+    {
+        return Storage::download('public/'.$fileName);
     }
 
     public function listissed()
