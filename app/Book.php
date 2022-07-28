@@ -19,7 +19,7 @@ class Book extends Model
 
     public function checkouts()
     {
-        return $this->hasOne(Checkout::class);
+        return $this->hasMany(Checkout::class);
     }
 
     public function user()

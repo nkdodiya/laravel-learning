@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 
 use App\Repositories\Interfaces\BookRepositoryInterface;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Book;
@@ -61,8 +62,14 @@ class BookRepository  implements BookRepositoryInterface
 
     public function getIssued()
     {
-        $uid = auth()->user()->id;
-        return  Book::with(['checkouts:id,user_id,book_id'])->get()->where("checkouts.user_id","=",$uid);
+
+     //$x  = Book::with(['checkouts:id,user_id,book_id'])->get()->where("checkouts.user_id","=",13);
+        return Book::with('checkouts:id,user_id,book_id')->whereHas('checkouts', function (Builder $query) {
+            $uid = auth()->user()->id;
+            $query->where('user_id', '=', $uid);
+           })->get();
+
+
     }
 
 

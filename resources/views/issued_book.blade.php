@@ -19,7 +19,8 @@
     </div><br />
   @endif
 
-
+    @php //dd($books->toArray());
+     @endphp
   @if($books->isEmpty())
   <div class="alert alert-success"> You have not issued any book......</div>
   @else
@@ -41,7 +42,7 @@
             <td>{{$case->bookname}}</td>
             <td>{{$case->author}}</td>
 
-            <td><input type="button" id=issue{{$case->id}} onclick='returnbook({{$case->checkouts->id}})' class="btn btn-success" value="Return Book"></td>
+            <td><input type="button" id=issue{{$case->id}} onclick='returnbook({{$case->checkouts[0]->id}})' class="btn btn-success" value="Return Book"></td>
         </tr>
         @endforeach
 
